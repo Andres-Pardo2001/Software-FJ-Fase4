@@ -1,0 +1,74 @@
+2026-11-22 23:27:50,149 | INFO | Operación 1 realizada correctamente
+2026-11-22 23:27:50,149 | ERROR | Error controlado en operación 2: El correo electrónico no tiene un formato válido.
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 22, in ejecutar_operacion
+    resultado = funcion()
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 48, in <lambda>
+    lambda: clientes.append(Cliente("C002", "Carlos Ruiz", "correo-invalido", "3115556677")))
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/clientes.py", line 10, in __init__
+    self.correo = correo
+    ^^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/clientes.py", line 30, in correo
+    raise DatosInvalidosError("El correo electrónico no tiene un formato válido.")
+excepciones.DatosInvalidosError: El correo electrónico no tiene un formato válido.
+2026-11-22 23:27:50,150 | INFO | Operación 3 realizada correctamente
+2026-11-22 23:27:50,150 | INFO | Operación 4 realizada correctamente
+2026-11-22 23:27:50,150 | ERROR | Error controlado en operación 5: La tarifa base debe ser mayor que cero.
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 22, in ejecutar_operacion
+    resultado = funcion()
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 64, in <lambda>
+    lambda: servicios.append(AlquilerEquipo("S002", "Proyector", -1000, 2)))
+                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/servicios.py", line 57, in __init__
+    super().__init__(identificador, nombre, tarifa_base, disponible)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/servicios.py", line 12, in __init__
+    raise DatosInvalidosError("La tarifa base debe ser mayor que cero.")
+excepciones.DatosInvalidosError: La tarifa base debe ser mayor que cero.
+2026-11-22 23:27:50,151 | INFO | Operación 6 realizada correctamente
+2026-11-22 23:27:50,151 | INFO | Operación 7 realizada correctamente
+2026-11-22 23:27:50,151 | INFO | Operación 8 realizada correctamente
+2026-11-22 23:27:50,151 | INFO | Operación 9 realizada correctamente
+2026-11-22 23:27:50,151 | ERROR | Error controlado en operación 10: La sala puede reservarse máximo 12 horas por operación.
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 22, in ejecutar_operacion
+    resultado = funcion()
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 90, in <lambda>
+    lambda: Reserva("R002", clientes[0], servicios[0], 30))
+            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/reservas.py", line 17, in __init__
+    servicio.validar_parametros(duracion)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/mnt/data/Software-FJ-Fase4/servicios.py", line 50, in validar_parametros
+    raise DatosInvalidosError("La sala puede reservarse máximo 12 horas por operación.")
+excepciones.DatosInvalidosError: La sala puede reservarse máximo 12 horas por operación.
+2026-11-22 23:27:50,152 | INFO | Operación 11 realizada correctamente
+2026-11-22 23:27:50,152 | INFO | Operación 12 realizada correctamente
+2026-11-22 23:27:50,152 | ERROR | Error controlado en operación 13: La reserva no se puede cancelar en su estado actual.
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 22, in ejecutar_operacion
+    resultado = funcion()
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 100, in <lambda>
+    lambda: reservas[0].cancelar())
+            ~~~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/data/Software-FJ-Fase4/reservas.py", line 32, in cancelar
+    raise EstadoReservaError("La reserva no se puede cancelar en su estado actual.")
+excepciones.EstadoReservaError: La reserva no se puede cancelar en su estado actual.
+2026-11-22 23:27:50,152 | ERROR | Error controlado en operación 14: No fue posible convertir el dato recibido.
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 105, in operacion_encadenada
+    int("dato-no-numerico")
+    ~~~^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'dato-no-numerico'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 22, in ejecutar_operacion
+    resultado = funcion()
+  File "/mnt/data/Software-FJ-Fase4/main.py", line 107, in operacion_encadenada
+    raise SoftwareFJError("No fue posible convertir el dato recibido.") from error
+excepciones.SoftwareFJError: No fue posible convertir el dato recibido.
+2026-11-22 23:27:50,153 | INFO | Ejecución de demostración finalizada.
